@@ -1,2 +1,2 @@
 # weather-app
-Test React Native App
+Test React Native Weather App
