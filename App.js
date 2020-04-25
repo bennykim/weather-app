@@ -1,32 +1,32 @@
 import React, { useEffect, useState, memo } from 'react'
 import { StyleSheet, View, Text, Alert } from 'react-native'
 import * as Location from 'expo-location'
+import axios from 'axios'
 
 import Loading from './Loading'
+import Weather from './Weather'
+
+const API_KEY = '02fb21c1688c5d858a86f41661b4d111'
+const BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
 
 const App = () => {
-  const [location, setLocation] = useState({})
+  const [temp, setTemp] = useState(null)
   const [errorMsg, setErrorMsg] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
 
   const getLocation = async () => {
     try {
-      let { status } = await Location.requestPermissionsAsync()
+      const { status } = await Location.requestPermissionsAsync()
 
       if (status !== 'granted') {
         setErrorMsg('Permission to access location was denied')
       }
 
-      let { coords } = await Location.getCurrentPositionAsync({})
-      
-      setLocation({
-        latitude: coords.latitude, 
-        longitude: coords.longitude
-      })
+      const { coords } = await Location.getCurrentPositionAsync({})
+      const { data } = await axios.get(`${BASE_URL}/?lat=${coords.latitude}&lon=${coords.longitude}&appid=${API_KEY}&units=metric`)
 
-      setTimeout(() => {
-        setIsLoading(false)
-      }, 2000);
+      setTemp(data.main.temp)
+      setIsLoading(false)
     } catch(err) {
       Alert.alert("Can't find you ...")
     }
@@ -40,12 +40,9 @@ const App = () => {
     <View style={styles.container}>
       {
         isLoading ? 
-          <Loading />
+          <Loading/>
           :
-          <View>
-            <Text>{location.latitude}</Text>
-            <Text>{location.longitude}</Text>
-          </View>
+          <Weather temp={temp}/>
       }
     </View>
   )
@@ -53,10 +50,7 @@ const App = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingHorizontal: 30,
-    paddingVertical: 100,
-    backgroundColor: '#fdf6aa'
+    flex: 1
   }
 })
 

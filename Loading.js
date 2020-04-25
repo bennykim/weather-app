@@ -4,7 +4,7 @@ import { StyleSheet, View, Text } from 'react-native'
 const Loading = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Getting the App Weather</Text>
+      <Text style={styles.text}>Loading..</Text>
     </View>
   )
 }
@@ -12,7 +12,9 @@ const Loading = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fdf6aa'
   },
   text: {
     fontSize: 30
