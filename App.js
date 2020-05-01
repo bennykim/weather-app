@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, View, Alert } from 'react-native'
+import { StyleSheet, View, Alert, Text } from 'react-native'
 import * as Location from 'expo-location'
 import axios from 'axios'
+
+import 'react-native-gesture-handler'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 import { API_KEY, BASE_URL } from './data/api'
 import Loading from './components/Loading'
 import Weather from './components/Weather'
+import Home from './components/Home'
+
+const Stack = createStackNavigator();
 
 const App = () => {
   const [temp, setTemp] = useState(null)
@@ -45,11 +52,21 @@ const App = () => {
         isLoading ? 
           <Loading/>
           :
-          <Weather 
-            temp={temp} 
-            condition={condition} 
-            description={description}
-          />
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen name="Home">
+                {props => <Home {...props}/>}
+              </Stack.Screen>
+              <Stack.Screen name="Weather">
+                {props => <Weather
+                  navigation={props.navigation}
+                  temp={temp}
+                  condition={condition}
+                  description={description}
+                />}
+              </Stack.Screen>
+            </Stack.Navigator>
+          </NavigationContainer>
       }
     </View>
   )

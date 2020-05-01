@@ -23,6 +23,8 @@
     ],
     "ios": {
       "supportsTablet": true
-    }
+    },
+    "description": "Create react native weather app",
+    "githubUrl": "https://github.com/bennykim/weather-app.git"
   }
 }

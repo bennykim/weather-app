@@ -1,12 +1,12 @@
 import React from 'react'
-import { StyleSheet, View, Text, StatusBar } from 'react-native'
+import { StyleSheet, View, Text, StatusBar, Button } from 'react-native'
 import { MaterialCommunityIcons } from '@expo/vector-icons'
 import PropTypes from 'prop-types'
 import { LinearGradient } from 'expo-linear-gradient'
 
 import weatherOptions from '../data/weatherOptions'
 
-const Weather = ({ temp, condition, description}) => {
+const Weather = ({ navigation, temp, condition, description }) => {
   const temperature = Math.round(temp)
 
   return (
@@ -33,6 +33,10 @@ const Weather = ({ temp, condition, description}) => {
           {description}
         </Text>
       </View>
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.navigate('Home')}
+      />
     </LinearGradient>
   )
 }
