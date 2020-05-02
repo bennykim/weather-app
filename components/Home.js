@@ -1,14 +1,10 @@
 import React from 'react'
-import { StyleSheet, View, Text, Button } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 
-const Home = ({navigation}) => {
+const Home = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Home</Text>
-      <Button
-        title="Go to Weather"
-        onPress={() => navigation.navigate('Weather')}
-      />
+      <Text style={styles.text}>Weather Page</Text>
     </View>
   )
 }

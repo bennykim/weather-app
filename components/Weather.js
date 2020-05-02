@@ -6,7 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient'
 
 import weatherOptions from '../data/weatherOptions'
 
-const Weather = ({ navigation, temp, condition, description }) => {
+const Weather = ({ temp, condition, description }) => {
   const temperature = Math.round(temp)
 
   return (
@@ -33,10 +33,6 @@ const Weather = ({ navigation, temp, condition, description }) => {
           {description}
         </Text>
       </View>
-      <Button
-        title="Go to Home"
-        onPress={() => navigation.navigate('Home')}
-      />
     </LinearGradient>
   )
 }
