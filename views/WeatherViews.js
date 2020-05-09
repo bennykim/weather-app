@@ -75,7 +75,7 @@ const WeatherViews = () => {
                           position: 'absolute',
                           right: -6,
                           top: -3,
-                          backgroundColor: 'blue',
+                          backgroundColor: '#2c3e50',
                           borderRadius: 6,
                           width: 12,
                           height: 12,
@@ -92,7 +92,7 @@ const WeatherViews = () => {
                 },
               })}
               tabBarOptions={{
-                activeTintColor: 'blue',
+                activeTintColor: '#2c3e50',
                 inactiveTintColor: 'gray',
               }}
             >
