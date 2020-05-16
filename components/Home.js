@@ -1,13 +1,19 @@
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Button, Alert } from 'react-native'
 
 import ActionButton from 'react-native-circular-action-menu'
 import { Ionicons } from '@expo/vector-icons'
 
-const Home = () => {
+const Home = ({ data }) => {
+
   return (
     <View style={styles.container}>
-      {/* <Text style={styles.text}>Weather Page</Text> */}
+      <Button
+        style={styles.button}
+        title="press me"
+        onPress={() => Alert.alert(data.textData)}
+      />
+
       <ActionButton buttonColor="#2c3e50">
         <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => console.log("notes tapped!")}>
           <Ionicons name="logo-instagram" style={styles.actionButtonIcon} />
@@ -29,7 +35,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  text: {
+  button: {
     color: 'black',
     fontSize: 26
   },

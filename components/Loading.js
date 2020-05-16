@@ -1,11 +1,16 @@
 import React from 'react'
-import { StyleSheet, View, Text, StatusBar } from 'react-native'
+import { 
+  StyleSheet, 
+  View, 
+  StatusBar, 
+  ActivityIndicator
+} from 'react-native'
 
 const Loading = () => {
   return (
     <View style={styles.container}>
       <StatusBar barStyle='light-content'/>
-      <Text style={styles.text}>Loading..</Text>
+      <ActivityIndicator size="large" color="#ffffff" />   
     </View>
   )
 }

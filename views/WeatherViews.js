@@ -15,7 +15,7 @@ import Home from '../components/Home'
 
 const Tab = createBottomTabNavigator()
 
-const WeatherViews = () => {
+const WeatherViews = (textData) => {
   const [temp, setTemp] = useState(null)
   const [condition, setCondition] = useState('')
   const [description, setDescription] = useState('')
@@ -39,6 +39,8 @@ const WeatherViews = () => {
 
       setIsLoading(false)
     } catch (err) {
+      console.log(err);
+      
       Alert.alert("Can't find you ...")
     }
   }
@@ -97,7 +99,7 @@ const WeatherViews = () => {
               }}
             >
               <Tab.Screen name="Home">
-                {() => <Home />}
+                {() => <Home data={textData}/>}
               </Tab.Screen>
               <Tab.Screen name="Weather">
                 {() => <Weather
